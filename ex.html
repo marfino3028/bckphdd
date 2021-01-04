@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="master.css">
+    <title>UI-CARD</title>
+    <style>
+        .list-container{
+  list-style-type: none;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+.list-container li{
+  display: flex;
+  background-color: var(--color);
+  color: #fff;
+
+  padding: 49px;
+  border-radius: 14px;
+
+  transform-origin: top;
+  animation: fade-in .5s ease-in-out both;
+}
+@keyframes fade-in {
+from {
+  opacity: 0;
+  transform: scale(.75);
+}
+to{
+  opacity: 1;
+  transform: scale(1);
+}
+}
+.list-container li:nth-child(2){
+  animation-delay: .1s;
+}
+.list-container li:nth-child(3){
+  animation-delay: .2s;
+}
+.list-container li:not(:first-child){
+  margin-top: 21px;
+}
+
+.list-container li h2 {
+  margin-top: -30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.list-container li span {
+  font-size: 14px;
+  font-weight: 300;
+  opacity: .75;
+}
+.card-content .card-progress-container{
+  display: flex;
+  align-items: center;
+
+  margin-top: 49px;
+}
+.card-content .card-progress-container .card-progress-count{
+  opacity: 1;
+  margin-left: 12px;
+  font-size: 12px;
+}
+.card-content .card-progress-container .card-progress-bar{
+height: 14px;
+width: 100%;
+background-color: rgba(0, 0, 0, .25);
+overflow: hidden;
+border-radius: 14px;
+}
+.card-content .card-progress-container .card-progress-bar .card-progress-current{
+  width: var(--current);
+  height: 100%;
+}
+.card-content .card-progress-container .card-progress-bar .card-progress-current div {
+  background-color: #fff;
+  border-radius: 14px;
+  height: 100%;
+  width: 100%;
+  animation: progress-fade 1s ease-in-out both;
+}
+@keyframes progress-fade {
+  from{
+    width: 0;
+  }
+  to{
+    width: 100%;
+  }
+}
+.list-container li:nth-child(1) .card-content .card-progress-container .card-progress-bar .card-progress-current div{
+  animation-delay: .75s;
+}
+.list-container li:nth-child(2) .card-content .card-progress-container .card-progress-bar .card-progress-current div{
+  animation-delay: 1.5s;
+}
+.list-container li:nth-child(3) .card-content .card-progress-container .card-progress-bar .card-progress-current div{
+  animation-delay: 2.25s;
+}
+
+        </style>
+  </head>
+  <body>
+      <ul class="list-container">
+          <li style="--color: #A22AF1">
+            <div class="card-content">
+              <h2>Progress Waktu</h2>
+              <div class="card-progress-container">
+                <div id="hp"><input type="time" id='time1' name='start' value='08:00'></div>
+                <div id="fsh"><input type="time" id='time2' name='end' value='17:00'></div><br>
+                <div id="hgraph">
+                    <div id="hbar"></div>
+                </div>
+              </div><br><br><br>
+              <h2>Progress Tugas</h2>
+
+              <div class="card-progress-container">
+                <div id="hpt"><?=$count?></div>
+                                <div id="fsht">20</div><br>
+                                <div id="dgraph">
+                                    <!-- <div id="dbar"></div><div id="dbare" class='warning'></div> -->
+                                </div>
+            </div>
+          </li>
+          <li><input type="submit" value="submit"></li>
+      </ul>
+  </body>
+</html>
